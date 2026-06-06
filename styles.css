@@ -55,15 +55,15 @@ a:focus {
 }
 
 .photo-showcase {
-  width: min(760px, calc(100% - 32px));
-  margin: 24px auto 0;
+  width: min(520px, calc(100% - 32px));
+  margin: 18px auto 0;
   overflow: hidden;
 }
 
 .photo-slider {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  gap: 8px;
   overflow-x: auto;
   padding-bottom: 4px;
   scroll-snap-type: x mandatory;
@@ -71,7 +71,7 @@ a:focus {
 
 .photo-slide {
   margin: 0;
-  height: 150px;
+  height: 96px;
   overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--line);
@@ -99,7 +99,7 @@ a:focus {
 
 .layout {
   width: min(1120px, calc(100% - 32px));
-  margin: 34px auto 72px;
+  margin: 28px auto 72px;
   display: grid;
   grid-template-columns: 280px minmax(0, 1fr);
   gap: 52px;
@@ -255,15 +255,15 @@ time {
   }
 
   .photo-showcase {
-    margin-top: 18px;
+    margin-top: 14px;
   }
 
   .photo-slider {
-    grid-template-columns: repeat(3, 72vw);
+    grid-template-columns: repeat(3, 46vw);
   }
 
   .photo-slide {
-    height: 190px;
+    height: 128px;
   }
 
   .layout {
