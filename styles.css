@@ -168,6 +168,32 @@ time {
   font-size: 18px;
 }
 
+.entry {
+  padding: 14px 0 4px;
+}
+
+.entry-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: baseline;
+}
+
+.entry-head h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.entry-head time {
+  min-width: auto;
+  white-space: nowrap;
+}
+
+.role {
+  color: var(--muted);
+  font-weight: 600;
+}
+
 .paper-links {
   display: flex;
   gap: 14px;
@@ -204,5 +230,9 @@ time {
     max-width: none;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px 18px;
+  }
+
+  .entry-head {
+    display: block;
   }
 }
