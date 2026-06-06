@@ -54,9 +54,64 @@ a:focus {
   font-size: 15px;
 }
 
+.photo-showcase {
+  width: min(1120px, calc(100% - 32px));
+  margin: 28px auto 0;
+  overflow: hidden;
+}
+
+.photo-slider {
+  display: flex;
+  width: 300%;
+  animation: photo-slide 18s ease-in-out infinite;
+}
+
+.photo-slide {
+  width: calc(100% / 3);
+  margin: 0;
+  aspect-ratio: 16 / 7;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.photo-slide img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.slider-dots span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--line);
+}
+
+.slider-dots span:nth-child(1) {
+  animation: dot-one 18s ease-in-out infinite;
+}
+
+.slider-dots span:nth-child(2) {
+  animation: dot-two 18s ease-in-out infinite;
+}
+
+.slider-dots span:nth-child(3) {
+  animation: dot-three 18s ease-in-out infinite;
+}
+
 .layout {
   width: min(1120px, calc(100% - 32px));
-  margin: 42px auto 72px;
+  margin: 38px auto 72px;
   display: grid;
   grid-template-columns: 280px minmax(0, 1fr);
   gap: 52px;
@@ -204,11 +259,80 @@ time {
   color: var(--muted);
 }
 
+@keyframes photo-slide {
+  0%,
+  27% {
+    transform: translateX(0);
+  }
+
+  33%,
+  60% {
+    transform: translateX(-33.3333%);
+  }
+
+  66%,
+  93% {
+    transform: translateX(-66.6667%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes dot-one {
+  0%,
+  27%,
+  100% {
+    background: var(--accent);
+  }
+
+  33%,
+  93% {
+    background: var(--line);
+  }
+}
+
+@keyframes dot-two {
+  0%,
+  27%,
+  66%,
+  100% {
+    background: var(--line);
+  }
+
+  33%,
+  60% {
+    background: var(--accent);
+  }
+}
+
+@keyframes dot-three {
+  0%,
+  60%,
+  100% {
+    background: var(--line);
+  }
+
+  66%,
+  93% {
+    background: var(--accent);
+  }
+}
+
 @media (max-width: 760px) {
   .nav {
     justify-content: flex-start;
     overflow-x: auto;
     gap: 18px;
+  }
+
+  .photo-showcase {
+    margin-top: 18px;
+  }
+
+  .photo-slide {
+    aspect-ratio: 4 / 3;
   }
 
   .layout {
