@@ -2,3 +2,4 @@
 node_modules/
 dist/
 build/
+personal_photo/photo_*.jpg
