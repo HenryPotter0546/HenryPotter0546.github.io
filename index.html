@@ -25,23 +25,64 @@
     </header>
 
     <section class="photo-showcase" aria-label="Personal photos">
-      <div class="photo-slider">
-        <figure class="photo-slide">
-          <img src="personal_photo/display_1.jpg" alt="Weiheng Li portrait 1" />
-        </figure>
-        <figure class="photo-slide">
-          <img src="personal_photo/display_2.jpg" alt="Weiheng Li portrait 2" />
-        </figure>
-        <figure class="photo-slide">
-          <img src="personal_photo/display_3.jpg" alt="Weiheng Li portrait 3" />
-        </figure>
+      <button class="photo-nav prev" type="button" aria-label="Previous photo">
+        &lsaquo;
+      </button>
+      <div class="photo-slider" tabindex="0">
+        <div class="photo-track">
+          <figure class="photo-slide active">
+            <img src="personal_photo/display_1.jpg" alt="Weiheng Li portrait 1" />
+          </figure>
+          <figure class="photo-slide">
+            <img src="personal_photo/display_2.jpg" alt="Weiheng Li portrait 2" />
+          </figure>
+          <figure class="photo-slide">
+            <img src="personal_photo/display_3.jpg" alt="Weiheng Li portrait 3" />
+          </figure>
+        </div>
       </div>
+      <button class="photo-nav next" type="button" aria-label="Next photo">
+        &rsaquo;
+      </button>
       <div class="slider-dots" aria-hidden="true">
-        <span></span>
+        <span class="active"></span>
         <span></span>
         <span></span>
       </div>
     </section>
+
+    <script>
+      const photoSlider = document.querySelector(".photo-slider");
+      const photoTrack = document.querySelector(".photo-track");
+      const photoSlides = Array.from(document.querySelectorAll(".photo-slide"));
+      const photoDots = Array.from(document.querySelectorAll(".slider-dots span"));
+      const photoButtons = document.querySelectorAll(".photo-nav");
+      let activePhoto = 0;
+
+      function updatePhotoCarousel(index) {
+        activePhoto = (index + photoSlides.length) % photoSlides.length;
+        photoSlides.forEach((slide, slideIndex) => {
+          slide.classList.toggle("active", slideIndex === activePhoto);
+        });
+        photoDots.forEach((dot, dotIndex) => {
+          dot.classList.toggle("active", dotIndex === activePhoto);
+        });
+
+        const slide = photoSlides[activePhoto];
+        const sliderCenter = photoSlider.clientWidth / 2;
+        const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+        photoTrack.style.transform = `translateX(${sliderCenter - slideCenter}px)`;
+      }
+
+      photoButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          updatePhotoCarousel(activePhoto + (button.classList.contains("next") ? 1 : -1));
+        });
+      });
+
+      window.addEventListener("resize", () => updatePhotoCarousel(activePhoto));
+      updatePhotoCarousel(0);
+    </script>
 
     <main class="layout">
       <aside class="profile" aria-label="Profile summary">

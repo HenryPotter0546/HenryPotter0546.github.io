@@ -55,27 +55,41 @@ a:focus {
 }
 
 .photo-showcase {
-  width: min(520px, calc(100% - 32px));
-  margin: 18px auto 0;
-  overflow: hidden;
+  position: relative;
+  width: min(340px, calc(100% - 32px));
+  margin: 14px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .photo-slider {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-  overflow-x: auto;
-  padding-bottom: 4px;
-  scroll-snap-type: x mandatory;
+  width: 260px;
+  height: 104px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.photo-track {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .photo-slide {
+  flex: 0 0 128px;
   margin: 0;
-  height: 96px;
+  height: 82px;
   overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--line);
-  scroll-snap-align: start;
+  opacity: 0.45;
+  transform: scale(0.82);
+  filter: blur(1px);
+  transition: opacity 0.45s, transform 0.45s, filter 0.45s;
 }
 
 .photo-slide img {
@@ -86,20 +100,56 @@ a:focus {
   object-position: center;
 }
 
+.photo-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+  z-index: 2;
+}
+
+.photo-nav {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.photo-nav:hover,
+.photo-nav:focus {
+  border-color: var(--accent);
+}
+
 .slider-dots {
-  display: none;
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  display: flex;
+  gap: 5px;
+  transform: translateX(-50%);
 }
 
 .slider-dots span {
-  width: 7px;
-  height: 7px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: var(--line);
 }
 
+.slider-dots span.active {
+  width: 14px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
 .layout {
   width: min(1120px, calc(100% - 32px));
-  margin: 28px auto 72px;
+  margin: 30px auto 72px;
   display: grid;
   grid-template-columns: 280px minmax(0, 1fr);
   gap: 52px;
@@ -255,15 +305,25 @@ time {
   }
 
   .photo-showcase {
-    margin-top: 14px;
+    width: min(320px, calc(100% - 24px));
+    margin-top: 12px;
+    gap: 6px;
   }
 
   .photo-slider {
-    grid-template-columns: repeat(3, 46vw);
+    width: 232px;
+    height: 98px;
   }
 
   .photo-slide {
-    height: 128px;
+    flex-basis: 116px;
+    height: 78px;
+  }
+
+  .photo-nav {
+    width: 22px;
+    height: 22px;
+    font-size: 18px;
   }
 
   .layout {
