@@ -267,16 +267,24 @@ time {
 
 .education-entry {
   display: grid;
-  grid-template-columns: 56px minmax(0, 1fr);
-  gap: 16px;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 14px;
   align-items: start;
 }
 
-.school-logo {
-  width: 56px;
-  height: 56px;
-  object-fit: contain;
+.school-logo-frame {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
   background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.school-logo {
+  width: 72%;
+  height: 72%;
+  object-fit: contain;
 }
 
 .entry-head {
@@ -366,12 +374,12 @@ time {
   }
 
   .education-entry {
-    grid-template-columns: 46px minmax(0, 1fr);
-    gap: 12px;
+    grid-template-columns: 38px minmax(0, 1fr);
+    gap: 10px;
   }
 
-  .school-logo {
-    width: 46px;
-    height: 46px;
+  .school-logo-frame {
+    width: 38px;
+    height: 38px;
   }
 }
