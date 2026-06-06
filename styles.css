@@ -265,6 +265,20 @@ time {
   padding: 14px 0 4px;
 }
 
+.education-entry {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.school-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  background: var(--surface);
+}
+
 .entry-head {
   display: flex;
   justify-content: space-between;
@@ -349,5 +363,15 @@ time {
 
   .entry-head {
     display: block;
+  }
+
+  .education-entry {
+    grid-template-columns: 46px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .school-logo {
+    width: 46px;
+    height: 46px;
   }
 }
