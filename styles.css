@@ -296,6 +296,15 @@ time {
   height: 100%;
 }
 
+.publication.media-entry {
+  grid-template-columns: 192px minmax(0, 1fr);
+}
+
+.publication .media-frame {
+  width: 192px;
+  height: 192px;
+}
+
 .education-details,
 .media-details {
   min-width: 0;
@@ -398,5 +407,14 @@ time {
   .media-frame {
     width: 84px;
     height: 84px;
+  }
+
+  .publication.media-entry {
+    grid-template-columns: 168px minmax(0, 1fr);
+  }
+
+  .publication .media-frame {
+    width: 168px;
+    height: 168px;
   }
 }
